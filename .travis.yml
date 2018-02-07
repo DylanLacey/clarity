@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "8"
+env: 
+  - TEST_SUITE=latest
+  - TEST_SUITE=v0.10
+cache:
+  directories:
+    - latest/node_modules
+    - v0.10/node_modules
+script:
+  - cd $TEST_SUITE
+  - npm install
+  - npm run deploy
+deploy:
+  provider: pages
+  local_dir: clarity
+  skip-cleanup: true
+  github-token: $GITHUB_OAUTH_TOKEN
+  keep-history: true
+  committer-from-gh: true
+  on:
+    branch: website

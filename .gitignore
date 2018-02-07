@@ -1,14 +1,26 @@
-dist/
-tmp/
-node_modules/
-typings/
-.idea/
-gemini-report/
-.DS_Store
-.npmrc.clarity
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.code-workspace
+
+# IDE - VSCode
+.vscode/*
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
+
+# misc
 npm-debug.log
 
-.sass-cache/
-_site/
-js/
-.vscode
+# System Files
+.DS_Store
+Thumbs.db
