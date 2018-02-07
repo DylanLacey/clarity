@@ -1,23 +1,27 @@
 language: node_js
 node_js:
   - "8"
-env:
-  - TEST_SUITE=latest
-  - TEST_SUITE=v0.10
-cache:
-  directories:
-    - latest/node_modules
-    - v0.10/node_modules
-script:
-  - cd $TEST_SUITE
-  - npm install
-  - npm run deploy:ci
+# env:
+#   - TEST_SUITE=latest
+#   - TEST_SUITE=v0.10
+# cache:
+#   directories:
+#     - latest/node_modules
+#     - v0.10/node_modules
+# script:
+#   - cd $TEST_SUITE
+#   - npm install
+#   - npm run deploy:ci
 
 jobs:
   include:
+    - stage: build
+      script: 
+        - cd latest && npm install && npm run deploy:ci
+        - cd v0.10 && npm install && npm run deploy:ci
     - stage: deploy
       script: 
-        - ls
+        - ls /home/travis/build/gnomeontherun/clarity
       deploy:
         provider: pages
         verbose: true

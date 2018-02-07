@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+# build
+/deploy
+
 # IDEs and editors
 /.idea
 .project
