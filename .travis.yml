@@ -21,7 +21,7 @@ jobs:
       deploy:
         provider: pages
         verbose: true
-        local_dir: clarity
+        local_dir: deploy
         skip-cleanup: true
         github-token: $GITHUB_OAUTH_TOKEN
         keep-history: true
