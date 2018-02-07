@@ -16,6 +16,7 @@ script:
 jobs:
   include:
     - stage: deploy
+      script: skip
       deploy:
         provider: pages
         local_dir: clarity
