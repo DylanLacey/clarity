@@ -11,14 +11,16 @@ cache:
 script:
   - cd $TEST_SUITE
   - npm install
-  - npm run deploy
+  - npm run deploy:ci
 
 jobs:
   include:
     - stage: deploy
-      script: skip
+      script: 
+        - ls
       deploy:
         provider: pages
+        verbose: true
         local_dir: clarity
         skip-cleanup: true
         github-token: $GITHUB_OAUTH_TOKEN
