@@ -1,21 +1,16 @@
 language: node_js
 node_js:
   - "8"
-env: 
-  - TEST_SUITE=latest
-  - TEST_SUITE=v0.10
-cache:
-  directories:
-    - latest/node_modules
-    - v0.10/node_modules
-script:
-  - cd $TEST_SUITE
-  - npm install
-  - npm run deploy
-
+  
 jobs:
   include:
     - stage: builds
+      cache:
+        directories:
+          $TEST_SUITE/node_modules
+      env: 
+        - TEST_SUITE=latest
+        - TEST_SUITE=v0.10
       script: 
         - cd $TEST_SUITE
         - npm install
