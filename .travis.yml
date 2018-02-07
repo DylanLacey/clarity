@@ -1,7 +1,9 @@
 language: node_js
 node_js:
   - "8"
-
+env:
+  - TEST_SUITE=latest
+  - TEST_SUITE=v0.10
 cache:
   directories:
     - latest/node_modules
