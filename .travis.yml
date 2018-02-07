@@ -4,10 +4,9 @@ node_js:
 # env:
 #   - TEST_SUITE=latest
 #   - TEST_SUITE=v0.10
-# cache:
-#   directories:
-#     - latest/node_modules
-#     - v0.10/node_modules
+cache:
+  directories:
+    - deploy
 # script:
 #   - cd $TEST_SUITE
 #   - npm install
