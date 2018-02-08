@@ -24,7 +24,7 @@ jobs:
       skip-cleanup: true
     - stage: deploy
       script: 
-        - ls /home/travis/build/gnomeontherun/clarity
+        - ls -R /home/travis/build/gnomeontherun/clarity/deploy
       deploy:
         provider: pages
         verbose: true
