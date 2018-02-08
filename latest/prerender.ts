@@ -76,11 +76,12 @@ const deploy = () => {
   const paths = [
     `${OUTPUT_FOLDER}/*`,
     `${OUTPUT_FOLDER}/documentation/${environment.version}`,
-    `!${OUTPUT_FOLDER}/documentation`, 
+    `!${OUTPUT_FOLDER}/documentation/**`, 
     `!${OUTPUT_FOLDER}/.git`
   ];
-  del.sync(paths, {force: true});
+  const removed = del.sync(paths, {force: true});
   console.log("Cleared old build!");
+  console.log(removed);
 
   // Update the index.html base href
   replaceInFile.sync({
