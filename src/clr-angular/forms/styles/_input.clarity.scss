@@ -14,6 +14,8 @@
             max-width: calc(100% - #{$clr-forms-icon-size});
             margin-right: $clr-forms-icon-size;
             max-height: $clr-forms-baseline * 4;
+
+            @include clr-getTypePropertiesForDomElement(form_label, (font-size));
             
             &[readonly] {
                 border: none;
@@ -38,8 +40,7 @@
         @include form-flatten-compact-adjustments();
     }
 
-    .clr-form-control-disabled .clr-input-wrapper .clr-input {
-        color: $clr-forms-disabled-color;
-        cursor: not-allowed;
+    .clr-form-control-readonly .clr-input {
+        border: none;
     }
 }

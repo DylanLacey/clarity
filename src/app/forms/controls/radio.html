@@ -4,55 +4,176 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h2>Text Input</h2>
+  <h2>Radio Input</h2>
 
-<form class="clr-form">
-    <div class="clr-form-control">
-        <label for="basic" class="clr-control-label">
-            Basic
-        </label>
-        <div class="clr-control-container">
-            <div class="clr-input-wrapper">
-                <input type="text" id="basic" placeholder="Enter value here" class="clr-input">
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
-        </div>
-    </div>
-    <div class="clr-form-control">
-        <label for="error" class="clr-control-label">
-            Error state
-        </label>
-        <div class="clr-control-container clr-error">
-            <div class="clr-input-wrapper">
-                <input type="text" id="error" placeholder="Enter value here" class="clr-input">
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
-        </div>
-    </div>
-    <div class="clr-form-control clr-form-control-disabled">
-        <label for="disabled" class="clr-control-label">
-            Disabled state
-        </label>
-        <div class="clr-control-container">
-            <div class="clr-input-wrapper">
-                <input type="text" id="disabled" disabled placeholder="Enter value here" class="clr-input">
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
-        </div>
-    </div>
-    <div class="clr-form-control clr-form-control-readonly">
-        <label for="readonly" class="clr-control-label">
-            Readonly state
-        </label>
-        <div class="clr-control-container">
-            <div class="clr-input-wrapper">
-                <input type="text" id="readonly" readonly placeholder="Enter value here" class="clr-input">
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
-        </div>
-    </div>
-</form>
+  <form class="clr-form">
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Basic
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="basic" class="clr-radio">
+                  <label for="basic">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Multi
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="multi-1" class="clr-radio">
+                  <label for="multi-1" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-2" class="clr-radio">
+                  <label for="multi-2" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-3" class="clr-radio">
+                  <label for="multi-3" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-1" class="clr-radio">
+                  <label for="multi-1" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-2" class="clr-radio">
+                  <label for="multi-2" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-3" class="clr-radio">
+                  <label for="multi-3" class="clr-control-label">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Multi inline
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper clr-radio-inline">
+                  <input type="radio" id="multi-1" class="clr-radio">
+                  <label for="multi-1" class="clr-control-label">Label with for</label>
+                  <input type="radio" id="multi-2" class="clr-radio">
+                  <label for="multi-2" class="clr-control-label">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Multi wrappers
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="multi-1" class="clr-radio">
+                  <label for="multi-1">Label with for</label>
+              </div>
+              <div class="clr-radio-wrapper clr-error">
+                  <input type="radio" id="multi-2" class="clr-radio">
+                  <label for="multi-2">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Multi containers
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="multi-1" class="clr-radio">
+                  <label for="multi-1">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+          <div class="clr-control-container clr-error">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="multi-2" class="clr-radio">
+                  <label for="multi-2">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Multi
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="basic1" class="clr-radio">
+                  <label for="basic1">Label with for</label>
+                  <input type="radio" id="basic2" class="clr-radio">
+                  <label for="basic2">Label with for</label>
+                  <input type="radio" id="basic3" class="clr-radio">
+                  <label for="basic3">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Error
+          </label>
+          <div class="clr-control-container clr-error">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="error" class="clr-radio">
+                  <label for="error">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control">
+          <label class="clr-control-label">
+              Indeterminate
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="error" class="clr-radio clr-indeterminate">
+                  <label for="error">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+      <div class="clr-form-control clr-form-control-disabled">
+          <label class="clr-control-label">
+              Disabled
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="disabled" disabled class="clr-radio">
+                  <label for="disabled">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+      
+      <div class="clr-form-control clr-form-control-disabled">
+          <label class="clr-control-label">
+              Disabled checked
+          </label>
+          <div class="clr-control-container">
+              <div class="clr-radio-wrapper">
+                  <input type="radio" id="disabled-checked" disabled class="clr-radio" checked>
+                  <label for="disabled-checked">Label with for</label>
+              </div>
+              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+              <span class="clr-subtext">Helper Text</span>
+          </div>
+      </div>
+  
+  </form>
+  

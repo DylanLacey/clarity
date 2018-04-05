@@ -47,6 +47,18 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{row: grid}">
+        <label for="{{layout}}-long" class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
+            Basic input, This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..</label>
+        <div class="clr-control-container clr-error" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
+            <div class="clr-input-wrapper">
+                <input type="text" id="{{layout}}-long" placeholder="Enter value here" class="clr-input">
+                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="clr-subtext">This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because.. This is the song that doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and they'll continue singing it forever just because..</span>
+        </div>
+    </div>
+
+    <div class="clr-form-control" [ngClass]="{row: grid}">
         <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
             Basic checkbox</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
@@ -267,7 +279,7 @@
         <label class="clr-control-label" [ngClass]="{'col-xs-12': grid, 'col-md-2': grid && layout !== 'vertical'}">
             Basic multiple select</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-select-wrapper">
+            <div class="clr-multiselect-wrapper">
                 <div class="clr-select">
                     <select multiple>
                         <option>Option 1</option>

@@ -8,10 +8,8 @@
         display: flex;
         flex-direction: column;
 
-        &.clr-form-control-disabled, &.clr-form-control-readonly {
-            .clr-control-label {
-                color: $clr-forms-disabled-color;
-            }
+        &.clr-form-control-disabled {
+            opacity: $clr-forms-disabled-opacity;
         }
 
         &.clr-form-control-multi {
@@ -27,7 +25,7 @@
     .clr-control-label {
         display: block;
         color: $clr-forms-label-color;
-        font-size: calc(#{$clr-forms-baseline} * 2 + 1px);
+        @include clr-getTypePropertiesForDomElement(form_label, (font-size));
         font-weight: 600;
         line-height: $clr-forms-baseline * 3;
     }
@@ -37,8 +35,7 @@
 
         .clr-subtext {
             display: block;
-            font-size: calc(#{$clr-forms-baseline} * 2 - 1px);
-            line-height: $clr-forms-baseline * 2;
+            @include clr-getTypePropertiesForDomElement(form_subtext, (font-size, line-height));
             color: $clr-forms-subtext-color;
             margin-top: $clr-forms-baseline;
         }
@@ -46,7 +43,7 @@
         .clr-validate-icon {
             width: $clr-forms-icon-size;
             height: $clr-forms-icon-size;
-            margin-left: -$clr-forms-icon-size;
+            margin-left: -calc(#{$clr-forms-icon-size} + $clr-forms-baseline);
             display: none;
         }
 

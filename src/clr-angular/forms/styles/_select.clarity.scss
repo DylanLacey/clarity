@@ -3,11 +3,17 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.select') {
-    .clr-select-wrapper {
+    .clr-select-wrapper, .clr-multiselect-wrapper {
         display: flex;
 
         .clr-validate-icon {
             margin-left: 0;
+        }
+    }
+
+    .clr-multiselect-wrapper {
+        .clr-select {
+            margin-top: 6px;
         }
     }
 
@@ -22,6 +28,7 @@
             padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
             cursor: pointer;
             width: 100%;
+            @include clr-getTypePropertiesForDomElement(form_label, (font-size));
             //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
             //the dropdown.
             z-index: map-get($clr-layers, select-box);

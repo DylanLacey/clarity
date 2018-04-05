@@ -20,7 +20,7 @@
 @mixin form-inline-input() {
     .clr-control-label {
         display: inline-block;
-        margin-right: $clr-forms-baseline;
+        margin-right: $clr-forms-baseline * 2;
         width: auto;
     }
 }
@@ -92,17 +92,18 @@
     width: $size;
 }
 
-@mixin checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {
+@mixin checkbox-radio-label-styles($min-height, $padding-left, $color: $clr-forms-checkbox-label-color) {
     //Positioning
     position: relative;
     margin-top: $clr-forms-baseline;
 
     //Display
     display: inline-block;
+    color: $color;
     min-height: $min-height;
     padding-left: $padding-left;
     cursor: pointer;
-    line-height: $line-height;
+    line-height: $clr-forms-baseline * 4;
 }
 
 @mixin checkbox-radio-shared-inactive($size, $top, $left, $border-color) {

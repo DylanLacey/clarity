@@ -14,7 +14,7 @@
         }
 
         label {
-            @include checkbox-radio-label-styles($clr-forms-checkbox-label-height, $clr-forms-checkbox-padding-left);
+            @include checkbox-radio-label-styles($clr-forms-checkbox-label-height, $clr-forms-checkbox-padding-left, $clr-forms-checkbox-label-color);
         }
 
         //Checkbox base
@@ -87,20 +87,20 @@
         }
     }
 
-    .clr-form-control-disabled, .clr-form-control-readonly {
-        label {
-            @include disabled-form-fields();
-            color: $clr-forms-checkbox-disabled-color;
-        }
-
-        input[type="checkbox"]:checked + label::before {
+    .clr-form-control-disabled .clr-checkbox-wrapper {
+        input[type="checkbox"] + label::before, input[type="checkbox"]:checked + label::before {
             background-color: $clr-forms-checkbox-disabled-background-color;
+            border: none;
         }
 
         input[type="checkbox"]:checked + label::after {
             $disabled-border-style: ($clr-forms-checkbox-height / 8) solid $clr-forms-checkbox-disabled-mark-color;
             border-left: $disabled-border-style;
             border-bottom: $disabled-border-style;
+        }
+
+        input[type="checkbox"]:checked.clr-indeterminate + label::after {
+            border-left: none;
         }
     }
     

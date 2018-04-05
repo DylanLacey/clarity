@@ -12,7 +12,7 @@
         }
 
         label {
-            @include checkbox-radio-label-styles($clr-forms-radio-label-height, $clr-forms-radio-padding-left);
+            @include checkbox-radio-label-styles($clr-forms-radio-label-height, $clr-forms-radio-padding-left, $clr-forms-radio-label-color);
         }
 
         label:empty {
@@ -48,11 +48,6 @@
         }
 
         &.disabled {
-            label {
-                @include disabled-form-fields();
-                color: $clr-forms-radio-disabled-color; // font color
-            }
-
             input[type="radio"]:checked + label::before {
                 background-color: $clr-forms-radio-disabled-background-color; // 'dot' color
                 box-shadow: $clr-forms-radio-disabled-shadow; //background-color around the dot

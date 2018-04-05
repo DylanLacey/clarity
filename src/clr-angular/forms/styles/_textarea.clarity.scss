@@ -15,7 +15,6 @@
     
     .clr-textarea {
         max-width: calc(100% - #{$clr-forms-baseline});
-        margin-right: $clr-forms-baseline;
         height: auto;
 
         resize: vertical;
@@ -24,6 +23,7 @@
         color: $clr-forms-text-color;
         border-radius: $clr-forms-baseline / 2;
         padding: calc(#{$clr-forms-baseline} + 2px) $clr-forms-baseline * 2;
+        @include clr-getTypePropertiesForDomElement(form_label, (font-size));
         
         &:focus {
             outline: 0;
