@@ -31,7 +31,7 @@
         "webpack": "webpack --progress --colors",
         "preks:publish": "npm run build",
         "ks:publish": "cd src/ks-app; npm run build; cd ../../dist/ks-app; cat index.html > 404.html; surge; cd ../../",
-        "dev:publish": "npm run build; cd dist; cat index.html > 200.html; surge --domain clarity-forms.surge.sh --project ./dist;"
+        "dev:publish": "npm run build; cat ./dist/index.html > ./dist/200.html; surge --domain clarity-forms.surge.sh --project ./dist;"
     },
     "dependencies": {
         "@angular/animations": "^5.0.0",
