@@ -169,7 +169,7 @@ import {ClrIconModule} from "../../icon/icon.module";
             Basic multiselect
         </label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-select-wrapper">
+            <div class="clr-multiselect-wrapper">
                 <div class="clr-select clr-select-multiple">
                     <select multiple>
                         <option>Option 1</option>
@@ -189,349 +189,362 @@ class SimpleTest {
     grid = false;
 }
 
-export default function(): void {
-    describe("Form layouts", () => {
-        const base = 6;
-        let native, instance, fixture;
+describe("Form layouts", () => {
+    const base = 6;
+    let native, instance, fixture;
 
-        function verifyHeight(selector: string, value: number, verticalRhythm = true) {
-            const computed = getComputedStyle(native.querySelector(selector)).getPropertyValue("height");
-            expect(computed).toEqual(value + "px");
-            if (verticalRhythm) {
-                expect(value % 6).toEqual(0);
-            }
+    function verifyHeight(selector: string, value: number, verticalRhythm = true) {
+        const computed = getComputedStyle(native.querySelector(selector)).getPropertyValue("height");
+        expect(computed).toEqual(value + "px");
+        if (verticalRhythm) {
+            expect(value % 6).toEqual(0);
         }
+    }
 
-        function verticalTests() {
-            describe("text", () => {
-                it("control height", () => verifyHeight("#text", base * 10));
-                it("label height", () => verifyHeight("#text .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
-                it("input height", () => verifyHeight("#text .clr-input", base * 4));
-                it("subtext height", () => verifyHeight("#text .clr-subtext", base * 2));
+    function verticalTests() {
+        describe("text", () => {
+            it("control height", () => verifyHeight("#text", base * 10));
+            it("label height", () => verifyHeight("#text .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
+            it("input height", () => verifyHeight("#text .clr-input", base * 4));
+            it("subtext height", () => verifyHeight("#text .clr-subtext", base * 2));
+        });
+
+        describe("checkbox", () => {
+            it("control height", () => verifyHeight("#checkbox", base * 22));
+            it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
+            it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
+        });
+
+        describe("checkbox inline", () => {
+            it("control height", () => verifyHeight("#checkbox-inline", base * 12));
+            it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
+            it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
+        });
+
+        describe("radio", () => {
+            it("control height", () => verifyHeight("#radio", base * 22));
+            it("label height", () => verifyHeight("#radio .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 14));
+            it("radio height", () => verifyHeight("#radio .clr-radio", 0));
+            it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 2));
+        });
+
+        describe("radio inline", () => {
+            it("control height", () => verifyHeight("#radio-inline", base * 12));
+            it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
+            it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
+            it("radio label height",
+                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
+        });
+
+        describe("file", () => {
+            it("control height", () => verifyHeight("#file", base * 12));
+            it("label height", () => verifyHeight("#file .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
+            it("file height", () => verifyHeight("#file .clr-file", 0));
+            it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#file .clr-subtext", base * 2));
+        });
+
+        describe("file plain", () => {
+            let fileInput;
+            beforeEach(() => {
+                fileInput = parseInt(
+                    getComputedStyle(native.querySelector("#file-plain input")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#file-plain", fileInput + base * 8, false));
+            it("label height", () => verifyHeight("#file-plain .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
+            it("subtext height", () => verifyHeight("#file-plain .clr-subtext", base * 2));
+        });
 
-            describe("checkbox", () => {
-                it("control height", () => verifyHeight("#checkbox", base * 22));
-                it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
-                it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
+        describe("textarea", () => {
+            it("control height", () => verifyHeight("#textarea", base * 30));
+            it("label height", () => verifyHeight("#textarea .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
+            it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
+            it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
+        });
+
+        describe("select", () => {
+            it("control height", () => verifyHeight("#select", base * 10));
+            it("label height", () => verifyHeight("#select .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
+            it("select height", () => verifyHeight("#select .clr-select", base * 4));
+            it("subtext height", () => verifyHeight("#select .clr-subtext", base * 2));
+        });
+
+        describe("multiselect", () => {
+            let multiselect;
+            beforeEach(() => {
+                multiselect = parseInt(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#multiselect", multiselect + base * 7, false));
+            it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 3));
+            it("wrapper height", () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
+            it("select height", () => verifyHeight("#multiselect .clr-select", multiselect, false));
+            it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
+        });
+    }
 
-            describe("checkbox inline", () => {
-                it("control height", () => verifyHeight("#checkbox-inline", base * 12));
-                it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
-                it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
+    function horizontalTests() {
+        describe("text", () => {
+            it("control height", () => verifyHeight("#text", base * 7));
+            it("label height", () => verifyHeight("#text .clr-control-label", base * 7));
+            it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
+            it("input height", () => verifyHeight("#text .clr-input", base * 4));
+            it("subtext height", () => verifyHeight("#text .clr-subtext", base * 2));
+        });
+
+        describe("checkbox", () => {
+            it("control height", () => verifyHeight("#checkbox", base * 19));
+            it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 19));
+            it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
+            it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
+        });
+
+        describe("checkbox inline", () => {
+            it("control height", () => verifyHeight("#checkbox-inline", base * 9));
+            it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 9));
+            it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
+            it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
+        });
+
+        describe("radio", () => {
+            it("control height", () => verifyHeight("#radio", base * 19));
+            it("label height", () => verifyHeight("#radio .clr-control-label", base * 19));
+            it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 14));
+            it("radio height", () => verifyHeight("#radio .clr-radio", 0));
+            it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 2));
+        });
+
+        describe("radio inline", () => {
+            it("control height", () => verifyHeight("#radio-inline", base * 9));
+            it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 9));
+            it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
+            it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
+            it("radio label height",
+                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
+        });
+
+        describe("file", () => {
+            it("control height", () => verifyHeight("#file", base * 9));
+            it("label height", () => verifyHeight("#file .clr-control-label", base * 9));
+            it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
+            it("file height", () => verifyHeight("#file .clr-file", 0));
+            it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#file .clr-subtext", base * 2));
+        });
+
+        describe("file plain", () => {
+            let fileInput;
+            beforeEach(() => {
+                fileInput = parseInt(
+                    getComputedStyle(native.querySelector("#file-plain input")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#file-plain", fileInput + base * 5, false));
+            it("label height", () => verifyHeight("#file-plain .clr-control-label", fileInput + base * 5, false));
+            it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
+            it("subtext height", () => verifyHeight("#file-plain .clr-subtext", base * 2));
+        });
 
-            describe("radio", () => {
-                it("control height", () => verifyHeight("#radio", base * 22));
-                it("label height", () => verifyHeight("#radio .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 14));
-                it("radio height", () => verifyHeight("#radio .clr-radio", 0));
-                it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 2));
+        describe("textarea", () => {
+            it("control height", () => verifyHeight("#textarea", base * 27));
+            it("label height", () => verifyHeight("#textarea .clr-control-label", base * 27));
+            it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
+            it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
+            it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
+        });
+
+        describe("select", () => {
+            it("control height", () => verifyHeight("#select", base * 7));
+            it("label height", () => verifyHeight("#select .clr-control-label", base * 7));
+            it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
+            it("select height", () => verifyHeight("#select .clr-select", base * 4));
+            it("subtext height", () => verifyHeight("#select .clr-subtext", base * 2));
+        });
+
+        describe("multiselect", () => {
+            let multiselect;
+            beforeEach(() => {
+                multiselect = parseInt(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#multiselect", multiselect + base * 4, false));
+            it("label height", () => verifyHeight("#multiselect .clr-control-label", multiselect + base * 4, false));
+            it("wrapper height", () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
+            it("select height", () => verifyHeight("#multiselect .clr-select", multiselect, false));
+            it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
+        });
+    }
 
-            describe("radio inline", () => {
-                it("control height", () => verifyHeight("#radio-inline", base * 12));
-                it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
-                it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
-                it("radio label height",
-                   () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
+    function compactTests() {
+        describe("text", () => {
+            it("control height", () => verifyHeight("#text", base * 4));
+            it("label height", () => verifyHeight("#text .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
+            it("input height", () => verifyHeight("#text .clr-input", base * 4));
+            it("subtext height", () => verifyHeight("#text .clr-subtext", base * 4));
+        });
+
+        describe("checkbox", () => {
+            it("control height", () => verifyHeight("#checkbox", base * 4));
+            it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 4));
+            it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 4));
+        });
+
+        describe("checkbox inline", () => {
+            it("control height", () => verifyHeight("#checkbox-inline", base * 4));
+            it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 4));
+            it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
+            it("checkbox label height",
+                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 4));
+        });
+
+        describe("radio", () => {
+            it("control height", () => verifyHeight("#radio", base * 4));
+            it("label height", () => verifyHeight("#radio .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 4));
+            it("radio height", () => verifyHeight("#radio .clr-radio", 0));
+            it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 4));
+        });
+
+        describe("radio inline", () => {
+            it("control height", () => verifyHeight("#radio-inline", base * 4));
+            it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 4));
+            it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
+            it("radio label height",
+                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 4));
+        });
+
+        describe("file", () => {
+            it("control height", () => verifyHeight("#file", base * 4));
+            it("label height", () => verifyHeight("#file .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
+            it("file height", () => verifyHeight("#file .clr-file", 0));
+            it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
+            it("subtext height", () => verifyHeight("#file .clr-subtext", base * 4));
+        });
+
+        describe("file plain", () => {
+            let fileInput;
+            beforeEach(() => {
+                // the default file input is out of our control, so need to get its size for calculations
+                fileInput = parseInt(
+                    getComputedStyle(native.querySelector("#file-plain")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#file-plain", fileInput, false));
+            it("label height", () => verifyHeight("#file-plain .clr-control-label", fileInput, false));
+            it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
+            it("subtext height", () => verifyHeight("#file-plain .clr-subtext", fileInput, false));
+        });
 
-            describe("file", () => {
-                it("control height", () => verifyHeight("#file", base * 12));
-                it("label height", () => verifyHeight("#file .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
-                it("file height", () => verifyHeight("#file .clr-file", 0));
-                it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#file .clr-subtext", base * 2));
+        describe("textarea", () => {
+            it("control height", () => verifyHeight("#textarea", base * 23));
+            it("label height", () => verifyHeight("#textarea .clr-control-label", base * 23));
+            it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
+            it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
+            it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 23));
+        });
+
+        describe("select", () => {
+            it("control height", () => verifyHeight("#select", base * 4));
+            it("label height", () => verifyHeight("#select .clr-control-label", base * 4));
+            it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
+            it("select height", () => verifyHeight("#select .clr-select", base * 4));
+            it("subtext height", () => verifyHeight("#select .clr-subtext", base * 4));
+        });
+
+        describe("multiselect", () => {
+            let multiselect;
+            beforeEach(() => {
+                multiselect = parseInt(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
             });
+            it("control height", () => verifyHeight("#multiselect", multiselect, false));
+            it("label height", () => verifyHeight("#multiselect .clr-control-label", multiselect, false));
+            it("wrapper height", () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect, false));
+            it("select height", () => verifyHeight("#multiselect .clr-select", multiselect, false));
+            it("subtext height", () => verifyHeight("#multiselect .clr-subtext", multiselect, false));
+        });
+    }
 
-            describe("file plain", () => {
-                let fileInput;
-                beforeEach(() => {
-                    fileInput = parseInt(
-                        getComputedStyle(native.querySelector("#file-plain input")).getPropertyValue("height"), 10);
-                });
-                it("control height", () => verifyHeight("#file-plain", fileInput + base * 8, false));
-                it("label height", () => verifyHeight("#file-plain .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
-                it("subtext height", () => verifyHeight("#file-plain .clr-subtext", base * 2));
-            });
+    beforeEach(() => {
+        TestBed.configureTestingModule({imports: [ClrIconModule], declarations: [SimpleTest]});
+        fixture = TestBed.createComponent(SimpleTest);
+        instance = fixture.debugElement.componentInstance;
+        native = fixture.debugElement.nativeElement;
+        fixture.detectChanges();
+    });
 
-            describe("textarea", () => {
-                it("control height", () => verifyHeight("#textarea", base * 30));
-                it("label height", () => verifyHeight("#textarea .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-                it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
-                it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
-            });
-
-            describe("select", () => {
-                it("control height", () => verifyHeight("#select", base * 10));
-                it("label height", () => verifyHeight("#select .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
-                it("select height", () => verifyHeight("#select .clr-select", base * 4));
-                it("subtext height", () => verifyHeight("#select .clr-subtext", base * 2));
-            });
-
-            describe("multiselect", () => {
-                it("control height", () => verifyHeight("#multiselect", base * 23));
-                it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 3));
-                it("wrapper height", () => verifyHeight("#multiselect .clr-select-wrapper", base * 17));
-                it("select height", () => verifyHeight("#multiselect .clr-select", base * 17));
-                it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
-            });
-        }
-
-        function horizontalTests() {
-            describe("text", () => {
-                it("control height", () => verifyHeight("#text", base * 7));
-                it("label height", () => verifyHeight("#text .clr-control-label", base * 7));
-                it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
-                it("input height", () => verifyHeight("#text .clr-input", base * 4));
-                it("subtext height", () => verifyHeight("#text .clr-subtext", base * 2));
-            });
-
-            describe("checkbox", () => {
-                it("control height", () => verifyHeight("#checkbox", base * 19));
-                it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 19));
-                it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
-                it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
-            });
-
-            describe("checkbox inline", () => {
-                it("control height", () => verifyHeight("#checkbox-inline", base * 9));
-                it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 9));
-                it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
-                it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
-            });
-
-            describe("radio", () => {
-                it("control height", () => verifyHeight("#radio", base * 19));
-                it("label height", () => verifyHeight("#radio .clr-control-label", base * 19));
-                it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 14));
-                it("radio height", () => verifyHeight("#radio .clr-radio", 0));
-                it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 2));
-            });
-
-            describe("radio inline", () => {
-                it("control height", () => verifyHeight("#radio-inline", base * 9));
-                it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 9));
-                it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
-                it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
-                it("radio label height",
-                   () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
-            });
-
-            describe("file", () => {
-                it("control height", () => verifyHeight("#file", base * 9));
-                it("label height", () => verifyHeight("#file .clr-control-label", base * 9));
-                it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
-                it("file height", () => verifyHeight("#file .clr-file", 0));
-                it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#file .clr-subtext", base * 2));
-            });
-
-            describe("file plain", () => {
-                let fileInput;
-                beforeEach(() => {
-                    fileInput = parseInt(
-                        getComputedStyle(native.querySelector("#file-plain input")).getPropertyValue("height"), 10);
-                });
-                it("control height", () => verifyHeight("#file-plain", fileInput + base * 5, false));
-                it("label height", () => verifyHeight("#file-plain .clr-control-label", fileInput + base * 5, false));
-                it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
-                it("subtext height", () => verifyHeight("#file-plain .clr-subtext", base * 2));
-            });
-
-            describe("textarea", () => {
-                it("control height", () => verifyHeight("#textarea", base * 27));
-                it("label height", () => verifyHeight("#textarea .clr-control-label", base * 27));
-                it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-                it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
-                it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 2));
-            });
-
-            describe("select", () => {
-                it("control height", () => verifyHeight("#select", base * 7));
-                it("label height", () => verifyHeight("#select .clr-control-label", base * 7));
-                it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
-                it("select height", () => verifyHeight("#select .clr-select", base * 4));
-                it("subtext height", () => verifyHeight("#select .clr-subtext", base * 2));
-            });
-
-            describe("multiselect", () => {
-                it("control height", () => verifyHeight("#multiselect", base * 20));
-                it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 20));
-                it("wrapper height", () => verifyHeight("#multiselect .clr-select-wrapper", base * 17));
-                it("select height", () => verifyHeight("#multiselect .clr-select", base * 17));
-                it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
-            });
-        }
-
-        function compactTests() {
-            describe("text", () => {
-                it("control height", () => verifyHeight("#text", base * 4));
-                it("label height", () => verifyHeight("#text .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#text .clr-input-wrapper", base * 4));
-                it("input height", () => verifyHeight("#text .clr-input", base * 4));
-                it("subtext height", () => verifyHeight("#text .clr-subtext", base * 4));
-            });
-
-            describe("checkbox", () => {
-                it("control height", () => verifyHeight("#checkbox", base * 4));
-                it("label height", () => verifyHeight("#checkbox .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 4));
-                it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 4));
-            });
-
-            describe("checkbox inline", () => {
-                it("control height", () => verifyHeight("#checkbox-inline", base * 4));
-                it("label height", () => verifyHeight("#checkbox-inline .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 4));
-                it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
-                it("checkbox label height",
-                   () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 4));
-            });
-
-            describe("radio", () => {
-                it("control height", () => verifyHeight("#radio", base * 4));
-                it("label height", () => verifyHeight("#radio .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#radio .clr-radio-wrapper", base * 4));
-                it("radio height", () => verifyHeight("#radio .clr-radio", 0));
-                it("radio label height", () => verifyHeight("#radio .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio .clr-subtext", base * 4));
-            });
-
-            describe("radio inline", () => {
-                it("control height", () => verifyHeight("#radio-inline", base * 4));
-                it("label height", () => verifyHeight("#radio-inline .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 4));
-                it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
-                it("radio label height",
-                   () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 4));
-            });
-
-            describe("file", () => {
-                it("control height", () => verifyHeight("#file", base * 4));
-                it("label height", () => verifyHeight("#file .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#file .clr-file-wrapper", base * 4));
-                it("file height", () => verifyHeight("#file .clr-file", 0));
-                it("file label height", () => verifyHeight("#file .clr-file-wrapper .clr-control-label", base * 4));
-                it("subtext height", () => verifyHeight("#file .clr-subtext", base * 4));
-            });
-
-            describe("file plain", () => {
-                let fileInput;
-                beforeEach(() => {
-                    // the default file input is out of our control, so need to get its size for calculations
-                    fileInput = parseInt(
-                        getComputedStyle(native.querySelector("#file-plain input")).getPropertyValue("height"), 10);
-                });
-                it("control height", () => verifyHeight("#file-plain", fileInput, false));
-                it("label height", () => verifyHeight("#file-plain .clr-control-label", fileInput, false));
-                it("wrapper height", () => verifyHeight("#file-plain .clr-file-wrapper", fileInput, false));
-                it("subtext height", () => verifyHeight("#file-plain .clr-subtext", fileInput, false));
-            });
-
-            describe("textarea", () => {
-                it("control height", () => verifyHeight("#textarea", base * 23));
-                it("label height", () => verifyHeight("#textarea .clr-control-label", base * 23));
-                it("wrapper height", () => verifyHeight("#textarea .clr-textarea-wrapper", base * 23));
-                it("textarea height", () => verifyHeight("#textarea .clr-textarea", base * 23));
-                it("subtext height", () => verifyHeight("#textarea .clr-subtext", base * 23));
-            });
-
-            describe("select", () => {
-                it("control height", () => verifyHeight("#select", base * 4));
-                it("label height", () => verifyHeight("#select .clr-control-label", base * 4));
-                it("wrapper height", () => verifyHeight("#select .clr-select-wrapper", base * 4));
-                it("select height", () => verifyHeight("#select .clr-select", base * 4));
-                it("subtext height", () => verifyHeight("#select .clr-subtext", base * 4));
-            });
-
-            describe("multiselect", () => {
-                it("control height", () => verifyHeight("#multiselect", base * 17));
-                it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 17));
-                it("wrapper height", () => verifyHeight("#multiselect .clr-select-wrapper", base * 17));
-                it("select height", () => verifyHeight("#multiselect .clr-select", base * 17));
-                it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 17));
-            });
-        }
-
+    describe("Vertical", () => {
+        verticalTests();
+    });
+    describe("Vertical with Grid", () => {
         beforeEach(() => {
-            TestBed.configureTestingModule({imports: [ClrIconModule], declarations: [SimpleTest]});
-            fixture = TestBed.createComponent(SimpleTest);
-            instance = fixture.debugElement.componentInstance;
-            native = fixture.debugElement.nativeElement;
+            instance.grid = true;
             fixture.detectChanges();
         });
-
-        describe("Vertical", () => {
-            verticalTests();
-        });
-        describe("Vertical with Grid", () => {
-            beforeEach(() => {
-                instance.grid = true;
-                fixture.detectChanges();
-            });
-            verticalTests();
-        });
-        describe("Horizontal", () => {
-            beforeEach(() => {
-                instance.layout = "horizontal";
-                fixture.detectChanges();
-            });
-            horizontalTests();
-        });
-        describe("Horizontal with Grid", () => {
-            beforeEach(() => {
-                instance.layout = "horizontal";
-                instance.grid = true;
-                fixture.detectChanges();
-            });
-            horizontalTests();
-        });
-        describe("Compact", () => {
-            beforeEach(() => {
-                instance.layout = "compact";
-                fixture.detectChanges();
-            });
-            compactTests();
-        });
-        describe("Compact with Grid", () => {
-            beforeEach(() => {
-                instance.layout = "compact";
-                instance.grid = true;
-                fixture.detectChanges();
-            });
-            compactTests();
-        });
+        verticalTests();
     });
-}
+    describe("Horizontal", () => {
+        beforeEach(() => {
+            instance.layout = "horizontal";
+            fixture.detectChanges();
+        });
+        horizontalTests();
+    });
+    describe("Horizontal with Grid", () => {
+        beforeEach(() => {
+            instance.layout = "horizontal";
+            instance.grid = true;
+            fixture.detectChanges();
+        });
+        horizontalTests();
+    });
+    describe("Compact", () => {
+        beforeEach(() => {
+            instance.layout = "compact";
+            fixture.detectChanges();
+        });
+        compactTests();
+    });
+    describe("Compact with Grid", () => {
+        beforeEach(() => {
+            instance.layout = "compact";
+            instance.grid = true;
+            fixture.detectChanges();
+        });
+        compactTests();
+    });
+});

@@ -11,9 +11,13 @@
         }
     }
 
+    .clr-select-wrapper {
+        max-height: $clr-forms-baseline * 4;
+    }
+
     .clr-multiselect-wrapper {
         .clr-select {
-            margin-top: 6px;
+            margin-top: $clr-forms-baseline;
         }
     }
 
@@ -84,7 +88,6 @@
         border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
         border-radius: $clr-global-borderradius;
         height: auto;
-        margin-bottom: 1px; // vertical rhythm
         min-width: 5rem;
 
         &:hover,
@@ -119,5 +122,9 @@
         &.clr-select-multiple::after {
             content: none;
         }
+    }
+
+    .clr-form-compact .clr-multiselect-wrapper .clr-select {
+        margin-top: 0;
     }
 }
