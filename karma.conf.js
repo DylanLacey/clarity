@@ -127,9 +127,9 @@ module.exports = function(karma) {
         config.browsers = [
             "chrome_latest_win_10",
             "firefox_latest_win_10",
-            "safari_latest_osx_11",
-            "ie_11_win_8_1",
-            "edge_latest_win_10",
+            // "safari_latest_osx_11",
+            // "ie_11_win_8_1",
+            // "edge_latest_win_10",
         ];
         config.captureTimeout = 120000;
         config.customLaunchers = browsers;

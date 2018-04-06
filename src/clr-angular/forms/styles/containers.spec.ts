@@ -5,6 +5,8 @@
  */
 import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
+
+import {describeIgnore} from "../../../../tests/tests.helpers";
 import {ClrIconModule} from "../../icon/icon.module";
 
 @Component({
@@ -189,7 +191,7 @@ class SimpleTest {
     grid = false;
 }
 
-describe("Form layouts", () => {
+describeIgnore(["firefox"], "Form layouts", () => {
     const base = 6;
     let native, instance, fixture;
 
@@ -216,7 +218,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
             it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
         });
 
@@ -226,7 +228,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
             it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
         });
 
@@ -245,7 +247,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
             it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
             it("radio label height",
-                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
         });
 
@@ -294,7 +296,8 @@ describe("Form layouts", () => {
             });
             it("control height", () => verifyHeight("#multiselect", multiselect + base * 7, false));
             it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 3));
-            it("wrapper height", () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
+            it("wrapper height",
+               () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
             it("select height", () => verifyHeight("#multiselect .clr-select", multiselect, false));
             it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
         });
@@ -315,7 +318,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 14));
             it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 2));
         });
 
@@ -325,7 +328,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 5));
             it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 2));
         });
 
@@ -344,7 +347,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 5));
             it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
             it("radio label height",
-                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 2));
         });
 
@@ -393,7 +396,8 @@ describe("Form layouts", () => {
             });
             it("control height", () => verifyHeight("#multiselect", multiselect + base * 4, false));
             it("label height", () => verifyHeight("#multiselect .clr-control-label", multiselect + base * 4, false));
-            it("wrapper height", () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
+            it("wrapper height",
+               () => verifyHeight("#multiselect .clr-multiselect-wrapper", multiselect + base, false));
             it("select height", () => verifyHeight("#multiselect .clr-select", multiselect, false));
             it("subtext height", () => verifyHeight("#multiselect .clr-subtext", base * 2));
         });
@@ -414,7 +418,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox .clr-checkbox-wrapper", base * 4));
             it("checkbox height", () => verifyHeight("#checkbox .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox .clr-subtext", base * 4));
         });
 
@@ -424,7 +428,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper", base * 4));
             it("checkbox height", () => verifyHeight("#checkbox-inline .clr-checkbox", 0));
             it("checkbox label height",
-                () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#checkbox-inline .clr-checkbox-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#checkbox-inline .clr-subtext", base * 4));
         });
 
@@ -443,7 +447,7 @@ describe("Form layouts", () => {
             it("wrapper height", () => verifyHeight("#radio-inline .clr-radio-wrapper", base * 4));
             it("radio height", () => verifyHeight("#radio-inline .clr-radio", 0));
             it("radio label height",
-                () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
+               () => verifyHeight("#radio-inline .clr-radio-wrapper .clr-control-label", base * 4));
             it("subtext height", () => verifyHeight("#radio-inline .clr-subtext", base * 4));
         });
 
@@ -460,8 +464,8 @@ describe("Form layouts", () => {
             let fileInput;
             beforeEach(() => {
                 // the default file input is out of our control, so need to get its size for calculations
-                fileInput = parseInt(
-                    getComputedStyle(native.querySelector("#file-plain")).getPropertyValue("height"), 10);
+                fileInput =
+                    parseInt(getComputedStyle(native.querySelector("#file-plain")).getPropertyValue("height"), 10);
             });
             it("control height", () => verifyHeight("#file-plain", fileInput, false));
             it("label height", () => verifyHeight("#file-plain .clr-control-label", fileInput, false));
