@@ -8,6 +8,7 @@ import {Component, DebugElement, ViewChild} from "@angular/core";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
+import {itIgnore} from "../../../../tests/tests.helpers";
 
 import {TestContext} from "../../data/datagrid/helpers.spec";
 import {ClrFormsModule} from "../../forms-deprecated";
@@ -117,7 +118,9 @@ export default function() {
                     expect(context.clarityElement.placeholder).toBe("MM/DD/YYYY");
                 });
 
-                it("binds the input type correctly", () => {
+                // Ignore Safari here because it silently disallows setting to `date` types
+                // since it is not supported.
+                itIgnore(["safari"], "binds the input type correctly", () => {
                     expect(context.clarityElement.type).toBe("text");
 
                     enabledService.fakeIsEnabled = false;
