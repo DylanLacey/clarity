@@ -6,7 +6,6 @@
 import {Component} from "@angular/core";
 import {TestBed} from "@angular/core/testing";
 
-import {describeIgnore} from "../../../../tests/tests.helpers";
 import {ClrIconModule} from "../../icon/icon.module";
 
 @Component({
@@ -191,7 +190,7 @@ class SimpleTest {
     grid = false;
 }
 
-describeIgnore(["firefox"], "Form layouts", () => {
+describe("Form layouts", () => {
     const base = 6;
     let native, instance, fixture;
 
@@ -202,6 +201,10 @@ describeIgnore(["firefox"], "Form layouts", () => {
             expect(value % 6).toEqual(0);
         }
     }
+
+    /**
+     * @TODO Add tests to calculate widths as well
+     */
 
     function verticalTests() {
         describe("text", () => {
@@ -288,11 +291,14 @@ describeIgnore(["firefox"], "Form layouts", () => {
             it("subtext height", () => verifyHeight("#select .clr-subtext", base * 2));
         });
 
+        // For reasons yet unknown, a multiselect has additional height added to it, and different browsers append
+        // different amounts of height. This also interferes with vertical rhythm.
+        // @TODO See if it is possible or worth fixing vertical rhythm
         describe("multiselect", () => {
             let multiselect;
             beforeEach(() => {
-                multiselect = parseInt(
-                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
+                multiselect = parseFloat(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"));
             });
             it("control height", () => verifyHeight("#multiselect", multiselect + base * 7, false));
             it("label height", () => verifyHeight("#multiselect .clr-control-label", base * 3));
@@ -391,8 +397,8 @@ describeIgnore(["firefox"], "Form layouts", () => {
         describe("multiselect", () => {
             let multiselect;
             beforeEach(() => {
-                multiselect = parseInt(
-                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
+                multiselect = parseFloat(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"));
             });
             it("control height", () => verifyHeight("#multiselect", multiselect + base * 4, false));
             it("label height", () => verifyHeight("#multiselect .clr-control-label", multiselect + base * 4, false));
@@ -492,8 +498,8 @@ describeIgnore(["firefox"], "Form layouts", () => {
         describe("multiselect", () => {
             let multiselect;
             beforeEach(() => {
-                multiselect = parseInt(
-                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"), 10);
+                multiselect = parseFloat(
+                    getComputedStyle(native.querySelector("#multiselect .clr-select")).getPropertyValue("height"));
             });
             it("control height", () => verifyHeight("#multiselect", multiselect, false));
             it("label height", () => verifyHeight("#multiselect .clr-control-label", multiselect, false));
@@ -514,6 +520,7 @@ describeIgnore(["firefox"], "Form layouts", () => {
     describe("Vertical", () => {
         verticalTests();
     });
+
     describe("Vertical with Grid", () => {
         beforeEach(() => {
             instance.grid = true;
@@ -521,6 +528,7 @@ describeIgnore(["firefox"], "Form layouts", () => {
         });
         verticalTests();
     });
+
     describe("Horizontal", () => {
         beforeEach(() => {
             instance.layout = "horizontal";
@@ -528,6 +536,7 @@ describeIgnore(["firefox"], "Form layouts", () => {
         });
         horizontalTests();
     });
+
     describe("Horizontal with Grid", () => {
         beforeEach(() => {
             instance.layout = "horizontal";
@@ -536,6 +545,7 @@ describeIgnore(["firefox"], "Form layouts", () => {
         });
         horizontalTests();
     });
+
     describe("Compact", () => {
         beforeEach(() => {
             instance.layout = "compact";
@@ -543,6 +553,7 @@ describeIgnore(["firefox"], "Form layouts", () => {
         });
         compactTests();
     });
+
     describe("Compact with Grid", () => {
         beforeEach(() => {
             instance.layout = "compact";

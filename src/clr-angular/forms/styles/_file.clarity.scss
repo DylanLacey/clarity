@@ -33,8 +33,11 @@
             line-height: $clr-forms-baseline * 4;
             margin-top: 0;
         }
+        .clr-control-label {
+            line-height: 0.9rem; // Fixes extra height in FF
+        }
         .btn {
-            height: calc(1rem - 1px);
+            height: 1rem;
         }
     }
 }

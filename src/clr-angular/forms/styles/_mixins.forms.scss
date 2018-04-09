@@ -90,6 +90,7 @@
     //and so that the user's default input size doesn't affect it
     height: $size;
     width: $size;
+    display: none;
 }
 
 @mixin checkbox-radio-label-styles($min-height, $padding-left, $color: $clr-forms-checkbox-label-color) {

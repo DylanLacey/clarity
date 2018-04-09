@@ -18,7 +18,6 @@
         }
 
         //Checkbox base
-        // @TODO Verify new selector works properly in all browsers: label:not([for])::before
         input[type="checkbox"] + label::before {
             @include checkbox-radio-shared-inactive(
                 $clr-forms-checkbox-height, 
@@ -28,7 +27,6 @@
             border-radius: $clr-global-borderradius;
         }
 
-        // @TODO How to handle focused state here without a parent class? hmmm
         input[type="checkbox"]:focus + label::before {
             @include include-outline-style-form-fields();
         }
