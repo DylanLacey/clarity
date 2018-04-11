@@ -189,11 +189,11 @@
             Basic radio</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
-                <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" id="{{layout}}-radio1" name="radio-basic" class="clr-radio"> 
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
-                <input type="radio" name="radio1" id="{{layout}}-radio2" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" id="{{layout}}-radio2" name="radio-basic" class="clr-radio"> 
                 <label for="{{layout}}-radio2" class="clr-control-label">option 2</label>
-                <input type="radio" name="radio1" id="{{layout}}-radio3" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" id="{{layout}}-radio3" name="radio-basic" class="clr-radio"> 
                 <label for="{{layout}}-radio3" class="clr-control-label">option 3</label>
             </div>
             <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
@@ -225,11 +225,11 @@
             Inline radio</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper clr-radio-inline">
-                <input type="radio" name="radio2" id="{{layout}}-radio7" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio3" id="{{layout}}-radio7" placeholder="Enter value here" class="clr-radio"> 
                 <label for="{{layout}}-radio7" class="clr-control-label">option 1</label>
-                <input type="radio" name="radio2" id="{{layout}}-radio8" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio3" id="{{layout}}-radio8" placeholder="Enter value here" class="clr-radio"> 
                 <label for="{{layout}}-radio8" class="clr-control-label">option 2</label>
-                <input type="radio" name="radio2" id="{{layout}}-radio9" placeholder="Enter value here" class="clr-radio"> 
+                <input type="radio" name="radio3" id="{{layout}}-radio9" placeholder="Enter value here" class="clr-radio"> 
                 <label for="{{layout}}-radio9" class="clr-control-label">option 3</label>
             </div>
             <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
@@ -243,13 +243,11 @@
             Basic select</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
-                <div class="clr-select">
-                    <select>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
@@ -262,13 +260,11 @@
         </label>
         <div class="clr-control-container clr-error" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
-                <div class="clr-select">
-                    <select>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
@@ -280,13 +276,11 @@
             Basic multiple select</label>
         <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
-                <div class="clr-select">
-                    <select multiple>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
+                <select multiple>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
@@ -299,13 +293,11 @@
         </label>
         <div class="clr-control-container clr-error" [ngClass]="{'col-xs-12': grid, 'col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
-                <div class="clr-select">
-                    <select multiple>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
+                <select multiple>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
@@ -454,7 +446,7 @@
             </div>
             <span class="clr-subtext">Helper Text</span>
         </div>
-        <div class="clr-control-container clr-error" [ngClass]="{'col-xs-12': grid, 'col-md-3': grid}">
+        <div class="clr-control-container" [ngClass]="{'col-xs-12': grid, 'col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple-error" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>

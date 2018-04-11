@@ -2,32 +2,31 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@include exports('forms.control.input') {
+@include exports('forms.input') {
     .clr-input-wrapper {
         white-space: nowrap;
         height: $clr-forms-baseline * 4;
-        
-        .clr-input {
-            @include custom-inputs-reset($clr-forms-baseline * 4);
-            @include form-fields-appearance(2.5rem, $clr-forms-border-color);
-            padding: 0 $clr-forms-baseline;
-            max-width: calc(100% - #{$clr-forms-icon-size});
-            margin-right: $clr-forms-icon-size;
-            max-height: $clr-forms-baseline * 4;
+    }
+    
+    .clr-input {
+        @include custom-inputs-reset($clr-forms-baseline * 4);
+        @include form-fields-appearance($clr-forms-border-color);
+        padding: 0 $clr-forms-baseline;
+        margin-right: $clr-forms-icon-size; 
+        max-height: $clr-forms-baseline * 4;
 
-            @include clr-getTypePropertiesForDomElement(form_label, (font-size));
-            
-            &[readonly] {
-                border: none;
-            }
-            
-            &:not([readonly]) {
-                @include input-border-bottom-animation($clr-forms-focused-color);
-            }
+        @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+        
+        &[readonly] {
+            border: none;
+        }
+        
+        &:not([readonly]) {
+            @include input-border-bottom-animation($clr-forms-focused-color);
         }
     }
 
-    .clr-control-container.clr-error .clr-input-wrapper .clr-input {
+    .clr-error .clr-input:not([readonly]) {
         border-bottom-color: $clr-forms-invalid-color;
         @include input-border-bottom-animation($clr-forms-invalid-color);
     }
@@ -36,7 +35,7 @@
         max-width: calc(100% - #{$clr-forms-icon-size});
     }
 
-    .clr-form-compact .clr-input-wrapper .clr-input {
+    .clr-form-compact .clr-input {
         @include form-flatten-compact-adjustments();
     }
 

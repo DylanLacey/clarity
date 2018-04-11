@@ -7,18 +7,19 @@
         margin-top: $clr-forms-baseline * 4;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
+    }
 
-        &.clr-form-control-disabled {
-            opacity: $clr-forms-disabled-opacity;
-        }
+    .clr-form-control-disabled {
+        opacity: $clr-forms-disabled-opacity;
+    }
 
-        &.clr-form-control-multi {
-            flex-direction: row;
-            flex-wrap: wrap;
+    .clr-form-control-multi {
+        flex-direction: row;
+        flex-wrap: wrap;
 
-            .clr-control-label {
-                width: 100%;
-            }
+        .clr-control-label {
+            width: 100%;
         }
     }
 
@@ -32,30 +33,34 @@
 
     .clr-control-container {
         display: inline-block;
+    }
+
+    .clr-subtext {
+        display: block;
+        @include clr-getTypePropertiesForDomElement(form_subtext, (font-size, line-height));
+        color: $clr-forms-subtext-color;
+        margin-top: $clr-forms-baseline;
+    }
+
+    .clr-validate-icon {
+        width: $clr-forms-icon-size;
+        height: $clr-forms-icon-size;
+        min-width: $clr-forms-icon-size;
+        min-height: $clr-forms-icon-size;
+        display: inline-block;
+        color: $clr-forms-invalid-color;
+        display: none;
+        margin-left: -1rem;
+    }
+    
+    .clr-error {
+        .clr-validate-icon {
+            margin-left: -4px; // @TODO Figure out why there is this 4px gap between elements
+            display: inline-block;
+        }
 
         .clr-subtext {
-            display: block;
-            @include clr-getTypePropertiesForDomElement(form_subtext, (font-size, line-height));
-            color: $clr-forms-subtext-color;
-            margin-top: $clr-forms-baseline;
-        }
-
-        .clr-validate-icon {
-            width: $clr-forms-icon-size;
-            height: $clr-forms-icon-size;
-            margin-left: -calc(#{$clr-forms-icon-size} + $clr-forms-baseline);
-            display: none;
-        }
-
-        &.clr-error {
-            .clr-validate-icon {
-                color: $clr-forms-invalid-color;
-                display: inline-block;
-            }
-
-            .clr-subtext {
-                color: $clr-forms-invalid-color;
-            }
+            color: $clr-forms-invalid-color;
         }
     }
 
@@ -98,7 +103,7 @@
         }
         
         .clr-subtext {
-            margin-top: 0;
+            margin-top: $clr-forms-baseline;
             margin-left: $clr-forms-baseline;
         }
     }

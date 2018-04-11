@@ -2,7 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@include exports('forms.control.textarea') {
+@include exports('forms.textarea') {
+    // @TODO Fix selectors when old forms are removed to allow better defaults
     .clr-textarea-wrapper {
         white-space: nowrap;
         display: flex;
@@ -31,14 +32,12 @@
         }
     }
     
-    &.clr-error {
-        .clr-textarea {
-            border-color: $clr-forms-invalid-color;
-            
-            &:focus {
-                outline: 0;
-                box-shadow: 0 0 2px 2px lighten($clr-forms-invalid-color, 30%);
-            }
+    .clr-error .clr-textarea {
+        border-color: $clr-forms-invalid-color;
+        
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 2px 2px lighten($clr-forms-invalid-color, 30%);
         }
     }
     
@@ -51,7 +50,7 @@
         max-width: calc(100% - #{$clr-forms-baseline});
     }
 
-    .clr-form-compact .clr-textarea-wrapper{
+    .clr-form-compact .clr-textarea-wrapper {
         margin-top: 0;
         
         .clr-textarea {

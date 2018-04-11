@@ -2,7 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@include exports('forms.control.radio') {
+@include exports('forms.radio') {
+    // @TODO un-nest the radio inputs when old forms are removed
     .clr-radio-wrapper {
         @include form-flatten-validate-text();
 

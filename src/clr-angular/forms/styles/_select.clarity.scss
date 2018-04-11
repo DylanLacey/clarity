@@ -4,34 +4,16 @@
 
 @include exports('forms.select') {
     .clr-select-wrapper, .clr-multiselect-wrapper {
-        display: flex;
-
-        .clr-validate-icon {
-            margin-left: 0;
-        }
-    }
-
-    .clr-select-wrapper {
-        max-height: $clr-forms-baseline * 4;
-    }
-
-    .clr-multiselect-wrapper {
-        .clr-select {
-            margin-top: $clr-forms-baseline;
-        }
-    }
-
-    .clr-select {
         position: relative;
+        white-space: nowrap;
 
         select {
             @include custom-inputs(1rem);
-            @include clr-form-fields-appearance(2.5rem, $clr-forms-border-color);
+            @include form-fields-appearance($clr-forms-border-color);
             @include input-border-bottom-animation($clr-forms-focused-color);
             position: relative;
             padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
             cursor: pointer;
-            width: 100%;
             @include clr-getTypePropertiesForDomElement(form_label, (font-size));
             //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
             //the dropdown.
@@ -56,8 +38,12 @@
         select::-ms-expand {
             display: none;
         }
+    }
 
-        //Selectbox custom arrow
+    .clr-select-wrapper {
+        max-height: $clr-forms-baseline * 4;
+        display: inline-block;
+
         &::after {
             position: absolute;
             content: '';
@@ -65,7 +51,7 @@
             width: $clr-forms-select-caret-size;
             top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) / 2;
             right: $clr-forms-baseline;
-            // TODO: get rid of generated icons
+            // TODO: get rid of generated icons?
             background-image: generateCaretIcon($clr-forms-select-caret-color);
             @include icon-background-styles();
             margin: 0;
@@ -74,10 +60,18 @@
         &:hover::after {
             color: $clr-forms-select-caret-hover-color;
         }
+    }
 
-        //Multiple Select
-        &.multiple::after {
-            content: none;
+    .clr-error .clr-select-wrapper::after {
+        right: $clr-forms-icon-size + $clr-forms-baseline;
+    }
+
+    .clr-multiselect-wrapper {
+        margin-top: $clr-forms-baseline;
+        display: flex;
+
+        .clr-validate-icon {
+            margin-left: 0;
         }
     }
 
@@ -88,7 +82,6 @@
         border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
         border-radius: $clr-global-borderradius;
         height: auto;
-        min-width: 5rem;
 
         &:hover,
         &:active {
@@ -118,13 +111,9 @@
                 border-color: $clr-forms-border-color;
             }
         }
-
-        &.clr-select-multiple::after {
-            content: none;
-        }
     }
 
-    .clr-form-compact .clr-multiselect-wrapper .clr-select {
+    .clr-form-compact .clr-multiselect-wrapper {
         margin-top: 0;
     }
 }

@@ -2,9 +2,9 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@include exports('forms.control.input-group') {
+@include exports('forms.input-group') {
     .clr-input-group {
-        @include form-fields-appearance(2.5rem, $clr-forms-border-color);
+        @include form-fields-appearance($clr-forms-border-color);
         @include input-border-bottom-animation($clr-forms-focused-color);
         margin-right: $clr-forms-baseline * 4;
         max-width: calc(100% - 1rem);

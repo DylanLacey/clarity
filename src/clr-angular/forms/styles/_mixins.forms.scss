@@ -27,12 +27,8 @@
 
 // Used to adjust the flattened error icon message for compact
 @mixin form-flatten-compact-adjustments() {
-    margin-right: $clr-forms-baseline / 2;
     max-width: 100%;
 
-    & ~ .clr-validate-icon {
-        margin-left: $clr-forms-baseline;
-    }
     & ~ .clr-subtext {
         margin-left: $clr-forms-baseline;
     }
@@ -67,11 +63,10 @@
   }
 }
 
-@mixin form-fields-appearance($min-width, $border-bottom-width) {
+@mixin form-fields-appearance($border-bottom-color) {
   color: $clr-forms-text-color;
   display: inline-block;
-  min-width: $min-width;
-  border-bottom: $clr-default-borderwidth solid $border-bottom-width;
+  border-bottom: $clr-default-borderwidth solid $border-bottom-color;
 }
 
 @mixin disabled-form-fields() {
@@ -90,7 +85,6 @@
     //and so that the user's default input size doesn't affect it
     height: $size;
     width: $size;
-    display: none;
 }
 
 @mixin checkbox-radio-label-styles($min-height, $padding-left, $color: $clr-forms-checkbox-label-color) {
@@ -134,11 +128,4 @@
     &:focus {
         outline: 0;
     }
-}
-
-@mixin clr-form-fields-appearance($min-width, $border-bottom-width) {
-    color: $clr-forms-text-color;
-    display: inline-block;
-    min-width: $min-width;
-    border-bottom: $clr-default-borderwidth solid $border-bottom-width;
 }

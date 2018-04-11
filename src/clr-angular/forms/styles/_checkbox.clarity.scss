@@ -4,6 +4,8 @@
 
 @include exports('forms.checkbox') {
     $mark-half-size: $clr-forms-checkbox-mark-size / 2;
+
+    // @TODO un-nest the checkbox from the wrapper, after old forms are removed
     .clr-checkbox-wrapper {
         @include form-flatten-validate-text();
 
@@ -46,7 +48,6 @@
             border-color: $clr-forms-checkbox-mark-color;
         }
 
-        // @TODO How to get checked state without a parent class?
         input[type="checkbox"]:checked + label::before {
             background: $clr-forms-checkbox-background-color;
             border: none;
@@ -64,20 +65,6 @@
             border-bottom-color: $clr-forms-checkbox-indeterminate-border-color;
             display: inline-block;
             transform: translate(0, $mark-half-size);
-        }
-
-        label > input[type="checkbox"]::after {
-            position: absolute;
-            content: '';
-            display: none;
-            height: $mark-half-size + $clr-rem-1px;
-            width: $clr-forms-checkbox-mark-size;
-            border-left: $clr-forms-checkbox-border-style;
-            border-bottom: $clr-forms-checkbox-border-style;
-            top: ($clr-forms-baseline * 4 - $clr-forms-checkbox-height) / 2;
-            left: $mark-half-size;
-            transform: translate(0, $checkmark-half-size) rotate(-45deg);
-            border-color: $clr-forms-checkbox-mark-color;
         }
 
         &.clr-checkbox-inline {

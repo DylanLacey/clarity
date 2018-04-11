@@ -88,13 +88,25 @@ module.exports = function(karma) {
         mime: {
             "text/x-typescript": ["ts", "tsx"]
         },
-        reporters: ["mocha", "coverage-istanbul"],
+        reporters: ["mocha", "coverage-istanbul", "html"],
+        htmlReporter: {
+            outputFile: "./reports/unit/index.html",
+            useLegacyStyle: true,
+            useCompactStyle: true
+        },
         coverageIstanbulReporter: {
             dir: "./reports/coverage/",
             fixWebpackSourcePaths: true,
             reports: ["html", "lcovonly", "cobertura"]
         },
-        browsers: ["Chrome_Headless"],
+        browsers: [
+            // ChromeHeadless is the default, but you can toggle this list in dev. Always reset back to just ChromeHeadless.
+            "ChromeHeadless", 
+            // "FirefoxHeadless",
+            // "Safari",
+            // "Edge",
+            // "IE",
+        ],
         browserNoActivityTimeout: 100000,
         port: 9018,
         runnerPort: 9101,
@@ -106,7 +118,7 @@ module.exports = function(karma) {
         webpackMiddleware: { noInfo: true, quiet: true },
         webpack: require("./webpack.test.config"),
         customLaunchers: {
-            Chrome_Headless: {
+            ChromeHeadless: {
                 base: "Chrome",
                 flags: [
                     "--headless",
