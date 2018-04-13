@@ -11,24 +11,24 @@ const browsers = {
         version: "latest",
         platform: "Windows 10"
     },
-    firefox_latest_win_10: {
-        base: "SauceLabs",
-        browserName: "firefox",
-        version: "latest",
-        platform: "Windows 10"
-    },
-    safari_latest_osx_11: {
-        base: "SauceLabs",
-        browserName: "safari",
-        version: "latest",
-        platform: "macOS 10.13"
-    },
-    ie_11_win_8_1: {
-        base: "SauceLabs",
-        browserName: "internet explorer",
-        version: "latest",
-        platform: "Windows 8.1"
-    },
+    // firefox_latest_win_10: {
+    //     base: "SauceLabs",
+    //     browserName: "firefox",
+    //     version: "latest",
+    //     platform: "Windows 10"
+    // },
+    // safari_latest_osx_11: {
+    //     base: "SauceLabs",
+    //     browserName: "safari",
+    //     version: "latest",
+    //     platform: "macOS 10.13"
+    // },
+    // ie_11_win_8_1: {
+    //     base: "SauceLabs",
+    //     browserName: "internet explorer",
+    //     version: "latest",
+    //     platform: "Windows 8.1"
+    // },
     edge_latest_win_10: {
         base: "SauceLabs",
         browserName: "MicrosoftEdge",
@@ -42,6 +42,7 @@ module.exports = function(karma) {
 
     const config = {
         autoWatch: true,
+        hostname: "karmalocal.com",
         basePath: "",
         frameworks: ["jasmine", "jasmine-matchers"],
         files: [
@@ -138,10 +139,10 @@ module.exports = function(karma) {
         config.reporters.push("saucelabs");
         config.browsers = [
             "chrome_latest_win_10",
-            "firefox_latest_win_10",
-            "safari_latest_osx_11",
+            // "firefox_latest_win_10",
+            // "safari_latest_osx_11",
             // "ie_11_win_8_1",
-            // "edge_latest_win_10",
+            "edge_latest_win_10",
         ];
         config.captureTimeout = 120000;
         config.customLaunchers = browsers;
