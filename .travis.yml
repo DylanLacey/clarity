@@ -31,6 +31,8 @@ addons:
     paths:
       - "$TRAVIS_BUILD_DIR/reports/"
   hostname: karmalocal.com
+  hosts:
+    - "karmalocal.com"
 
 cache:
   apt: true
