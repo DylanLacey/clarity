@@ -1,3 +1,5 @@
+require('os')
+
 /*
  * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
@@ -42,7 +44,7 @@ module.exports = function(karma) {
 
     const config = {
         autoWatch: true,
-        hostname: "karmalocal.com",
+        hostname: os.hostname(),
         basePath: "",
         frameworks: ["jasmine", "jasmine-matchers"],
         files: [
@@ -135,7 +137,7 @@ module.exports = function(karma) {
 
     // We'll use saucelabs for testing if and only if the access key is set in ENV, and CI flag is set.
     // We'll modify the config as necessary.
-    if (process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS) {
+    if (process.env.SAUCE_ACCESS_KEY) {// && process.env.TRAVIS) {
         config.reporters.push("saucelabs");
         config.browsers = [
             "chrome_latest_win_10",

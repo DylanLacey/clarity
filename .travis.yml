@@ -30,9 +30,9 @@ addons:
   artifacts:
     paths:
       - "$TRAVIS_BUILD_DIR/reports/"
-  hostname: karmalocal.com
+  hostname: karmalocal
   hosts:
-    - "karmalocal.com"
+    - "karmalocal"
 
 cache:
   apt: true
