@@ -1,4 +1,4 @@
-require('os')
+
 
 /*
  * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
@@ -44,7 +44,7 @@ module.exports = function(karma) {
 
     const config = {
         autoWatch: true,
-        hostname: os.hostname(),
+        hostname: "karmalocal",
         basePath: "",
         frameworks: ["jasmine", "jasmine-matchers"],
         files: [
